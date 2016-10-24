@@ -14,7 +14,6 @@ class UsersController < ApplicationController
     # binding.pry
     @user = User.new(user_params(:name, :password, :nausea, :happiness, :tickets, :height, :admin))
     @user.save
-    binding.pry
     redirect_to user_path(@user)
   end
 
@@ -26,6 +25,9 @@ class UsersController < ApplicationController
 
   # def destroy
   # end
+
+  def home
+  end
 
   private
 
