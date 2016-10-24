@@ -11,8 +11,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    # binding.pry
+    @user = User.new(user_params(:name, :password, :nausea, :happiness, :tickets, :height, :admin))
     @user.save
+    binding.pry
     redirect_to user_path(@user)
   end
 
@@ -27,7 +29,7 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user).permit(:name, tickets:, nausea_rating:, happiness_rating:, min_height: )
+  def user_params(*args)
+    params.require(:user).permit(args)
   end
 end

@@ -1,0 +1,25 @@
+<%= form_tag users_path do %>
+  <%= label_tag :name %><br>
+  <%= text_field_tag :'user[name]' %><br>
+<br>
+  <%= label_tag :password %><br>
+  <%= password_field_tag :'user[password]' %><br>
+<br>
+  <%= label_tag :nausea %><br>
+  <%= number_field_tag :'user[nausea]' %><br>
+<br>
+  <%= label_tag :happiness %><br>
+  <%= number_field_tag :'user[happiness]' %><br>
+<br>
+  <%= label_tag :tickets %><br>
+  <%= number_field_tag :'user[tickets]' %><br>
+<br>
+  <%= label_tag :height %><br>
+  <%= number_field_tag :'user[height]' %><br>
+<br>
+  <%= label_tag :admin %>
+  <%= check_box_tag :'user[admin]' %><br>
+<br>
+  <%= submit_tag "Create Account" %>
+
+<% end %>

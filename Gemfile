@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 # ruby '2.2.0'
+  gem 'pry-byebug'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2'
@@ -45,7 +46,7 @@ group :test, :development do
   gem "simplecov"
   gem "database_cleaner"
   gem "sqlite3"
-  gem "pry"
+
   gem "rack_session_access"
 end
 
