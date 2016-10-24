@@ -1,0 +1,12 @@
+Name: <%=@attraction.name %>
+Total Number of Users: <%@attraction. %>
+Ticket Requirement: <%=@attraction.tickets%>
+Height Requirement: <%=@attraction.min_height %>
+Nausea Rating: <%=@attraction.nausea_rating%>
+Happiness Rating: <%=@attraction.happiness_rating%>
+
+###
+<% button_tag(type: 'button') do %>
+<%=content_tag(:strong, 'Back')%>
+<%end%>
+###
