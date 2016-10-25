@@ -1,12 +1,19 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %><br>
+<% end %>
+
 Name: <%=@attraction.name %>
-Total Number of Users: <%@attraction. %>
+Total Number of Users: <%@attraction.users.length %>
 Ticket Requirement: <%=@attraction.tickets%>
 Height Requirement: <%=@attraction.min_height %>
 Nausea Rating: <%=@attraction.nausea_rating%>
 Happiness Rating: <%=@attraction.happiness_rating%>
 
-###
-<% button_tag(type: 'button') do %>
-<%=content_tag(:strong, 'Back')%>
-<%end%>
-###
+<% if User.find(current_user).admin == false %>
+  <%= form_tag rides_path do %>
+    <%= hidden_field :id, @attraction.id %>
+    <%= submit_tag "Go on this ride"%>
+  <% end %>
+<% else %>
+  <%= link_to "Edit Attraction", edit_attraction_path %>
+<% end %>

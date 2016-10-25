@@ -1,1 +1,13 @@
-<%= @user.name %>
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
+<% if @user.admin == true %>ADMIN <% end %>
+<% if @user.name != nil %>Name: <%= @user.name %><br> <% end %>
+<% if @user.admin != true %>Mood: <%= @user.mood %><br> <% end %>
+<% if @user.nausea != nil %>Nausea: <%= @user.nausea %><br> <% end %>
+<% if @user.happiness != nil %>Happiness: <%= @user.happiness %><br> <% end %>
+<% if @user.tickets != nil %>Tickets: <%= @user.tickets %><br> <% end %>
+<% if @user.height != nil %>Height: <%= @user.height %> <% end %>
+
+<%= link_to "See attractions", attractions_path %>

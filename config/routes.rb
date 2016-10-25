@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  root "users#home"
+  root "sessions#home"
   resources :users
   resources :attractions
   resources :rides
-  resources :sessions
+  resources :sessions#, except: [:new, :destroy]
+  get '/signin', to: 'sessions#new'#, as: 'signin'
+  get '/signout', to: 'sessions#destroy'#, as: 'signout'
 
 end

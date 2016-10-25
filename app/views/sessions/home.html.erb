@@ -1,0 +1,4 @@
+<% if current_user == nil || current_user == "" %>
+  <%= link_to "Sign up", new_user_path %>
+  <%= link_to "Sign in", signin_path %>
+<% end %>

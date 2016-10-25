@@ -1,0 +1,18 @@
+<%= form_for @attraction do |f| %>
+  <%= label_tag :name %>
+  <%= text_field_tag :'attraction[name]', @attraction.name %>
+  <br>
+  <%= label_tag :tickets %>
+  <%= number_field_tag :'attraction[tickets]', @attraction.tickets %>
+  <br>
+  <%= label_tag :nausea_rating %>
+  <%= number_field_tag :'attraction[nausea_rating]', @attraction.nausea_rating %>
+  <br>
+  <%= label_tag :happiness_rating %>
+  <%= number_field_tag :'attraction[happiness_rating]', @attraction.happiness_rating %>
+  <br>
+  <%= label_tag :min_height %>
+  <%= number_field_tag :'attraction[min_height]', @attraction.min_height %>
+  <br>
+  <%= submit_tag "Update Attraction" %>
+<% end %>

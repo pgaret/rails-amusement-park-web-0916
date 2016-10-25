@@ -7,6 +7,13 @@
     <%= csrf_meta_tags %>
     <%= analytics_init if Rails.env.production? %>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></link>
+    <style>
+      td, th {
+        padding: 20px 10px 10px 0px;
+        text-align: center;
+      }
+    </style>
+
   </head>
   <body>
     <!--  navbar -->
@@ -19,7 +26,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+          <%= link_to "Home", root_path %>
+        <% if current_user == nil || current_user == "" %>
+            <%= link_to "Sign In", signin_path %>
+            <%= link_to "Sign Up", new_user_path %>
+        <% else %>
+          <%= link_to "Hello, #{User.find(current_user).name}!", user_path(current_user) %>
+          <%= link_to "Attractions", attractions_path %>
+          <%= link_to "Log Out", signout_path %>
+        <% end %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

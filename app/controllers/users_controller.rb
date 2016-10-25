@@ -3,10 +3,6 @@ class UsersController < ApplicationController
   #   @users = User.all
   # end
 
-  def show
-    @user = User.find(params[:id])
-  end
-
   def new
   end
 
@@ -14,6 +10,7 @@ class UsersController < ApplicationController
     # binding.pry
     @user = User.new(user_params(:name, :password, :nausea, :happiness, :tickets, :height, :admin))
     @user.save
+    login(@user)
     redirect_to user_path(@user)
   end
 
@@ -29,9 +26,18 @@ class UsersController < ApplicationController
   def home
   end
 
+  def show
+    if logged_in?
+      @user = User.find(params[:id])
+    else
+      redirect_to root_path
+    end
+  end
+
   private
 
   def user_params(*args)
     params.require(:user).permit(args)
   end
+
 end

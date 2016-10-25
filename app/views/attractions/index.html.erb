@@ -1,9 +1,23 @@
-<h4>Name</h4>
-<% @attractions.each do |attraction| %>
-  <%=link_to attraction.name, attraction_path(attraction)%><br>
-<% end %>
-
-<h4>Tickets</h4>
-<% @attractions.each do |attraction| %>
-  <%=attraction.tickets%>
+<h1>Attractions:</h1>
+<table>
+  <tr>
+    <td><h3>Name</h3></td>
+    <td><h3>Tickets</h3></td>
+    <td><h3>Visit</h3></td>
+  </tr>
+  <% @attractions.map do |attraction| %>
+    <tr>
+      <td><%= attraction.name%></td>
+      <td><%= attraction.tickets.to_s%></td>
+      <% if User.find(current_user).admin != true %>
+        <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction)%></td>
+      <% else %>
+        <td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+<br>
+<% if User.find(current_user).admin == true %>
+  <%= link_to "New Attraction", new_attraction_path %>
 <% end %>
